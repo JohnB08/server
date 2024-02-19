@@ -15,7 +15,7 @@ await initializeServer(difficultyOptions);
 app.post("/setscore", async (req, res) => {
     const body = req.body;
     if (!validateBody(body)) {
-        return res.status(401).json({ message: "Invalid Highscore" });
+        return res.status(401).json({ message: "Missing Username/Highscore" });
     }
     const { username, highscore, difficulty } = body;
     let sanitUsername = usernameChecker(username);

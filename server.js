@@ -6,10 +6,12 @@ import { updateHighScore } from "./util/postgresFunctions/updateUser.js";
 import { postNewUser } from "./util/postgresFunctions/postUser.js";
 import { fetchTopTen } from "./util/postgresFunctions/fetchTopTen.js";
 import { usernameChecker } from "./util/sanitizeUsername.js";
+import { difficultyOptions, initializeServer } from "./util/initializeServer.js";
 const app = express();
 const port = 3000;
 app.use(express.json());
 app.use(cors());
+await initializeServer(difficultyOptions);
 app.post("/setscore", async (req, res) => {
     const body = req.body;
     if (!validateBody(body)) {

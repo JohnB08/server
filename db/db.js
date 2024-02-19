@@ -1,9 +1,9 @@
 import pkg from "pg";
 const { Pool } = pkg;
 export const pool = new Pool({
-    user: "JOHN",
-    password: "Ein2Tre4",
-    host: "postgres",
+    user: "highscoredatabase_user",
+    password: "XdWtGVjjaGFCzEpzjInKrZsQ7ykWuHwD",
+    host: "dpg-cn9i9d8cmk4c73a07ekg-a",
     port: 5432,
-    database: "HIGHSCORETEST"
+    database: "highscoredatabase"
 });

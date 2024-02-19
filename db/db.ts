@@ -3,7 +3,7 @@ import pkg from  "pg"
 const {Pool} = pkg
 
 const envFileVerifier = (envFile:string | undefined) =>{
-    if (typeof envFile === "string") return envFile
+    if (typeof envFile === "string" && envFile.length > 0) return envFile
     else return undefined
 }
 

@@ -1,7 +1,7 @@
 import pkg from "pg";
 const { Pool } = pkg;
 const envFileVerifier = (envFile) => {
-    if (typeof envFile === "string")
+    if (typeof envFile === "string" && envFile.length > 0)
         return envFile;
     else
         return undefined;

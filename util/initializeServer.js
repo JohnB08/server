@@ -1,6 +1,6 @@
 import { pool as db } from "../db/db.js";
+const errorArray = [];
 export const initializeServer = async (difficultyOption) => {
-    console.log("Initializing Server");
     try {
         for (let tablenames of difficultyOption) {
             const query = `CREATE TABLE IF NOT EXISTS ${tablenames} (userName VARCHAR(255), highScore INT)`;
@@ -8,13 +8,13 @@ export const initializeServer = async (difficultyOption) => {
         }
     }
     catch (error) {
-        console.log(error);
+        errorArray.push(error);
     }
-    console.log("Complete");
 };
 export const difficultyOptions = [
     "easy", "medium", "hard", "veryHard", "apocalypse"
 ];
 console.log("initializing server");
 await initializeServer(difficultyOptions);
+console.log(errorArray);
 console.log("initializing complete");

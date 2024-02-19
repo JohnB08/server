@@ -1,16 +1,16 @@
 import {pool as db} from "../db/db.js"
 
+
+const errorArray: any[] = []
 export const initializeServer = async(difficultyOption: difficulties)=>{
-    console.log("Initializing Server")
     try{
         for (let tablenames of difficultyOption){
             const query = `CREATE TABLE IF NOT EXISTS ${tablenames} (userName VARCHAR(255), highScore INT)`
             await db.query(query)
         }
     } catch (error){
-        console.log(error)
+        errorArray.push(error)
     }
-    console.log("Complete")
 }
 
 export const difficultyOptions = [
@@ -23,6 +23,6 @@ type difficulties = typeof difficultyOptions
 console.log("initializing server")
 
 await initializeServer(difficultyOptions)
-
+console.log(errorArray)
 console.log("initializing complete")
 
